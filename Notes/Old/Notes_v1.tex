@@ -1,0 +1,155 @@
+\documentclass[onecolumn,nofootinbib,superscriptaddress]{revtex4}
+
+%\usepackage{multirow, makecell}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{dcolumn}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage[latin1]{inputenc}
+\usepackage{latexsym}
+\usepackage{rotating}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[usenames]{color}
+%\usepackage{yfonts}
+\usepackage{float}
+\usepackage{ucs}
+\usepackage{xspace} % Sensible space treatment at end of simple macros
+\usepackage{mathrsfs}
+\usepackage{subfigure}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+%\usepackage{siunitx}
+\usepackage{array}
+\usepackage[normalem]{ulem}
+
+\newcommand{\dd}[1]{\mathrm{d}#1\,}
+
+\newcommand{\rs}[1]{\textcolor{blue}{\it{\textbf{RS: #1}}} }
+
+
+
+\begin{document}
+
+\title{Gravitational Radiation from Quantum Turbulence in Superfluid Dark Matter Halos}
+
+\author{R.C. Greene}
+\affiliation{Columbia?}
+\author{Robert Sims}
+\email{robert\_sims@brown.edu}
+\affiliation{Department of Physics, Brown University, Providence, RI, 02906}
+\author{Stefan Stanojevic}
+\affiliation{Department of Physics, Brown University, Providence, RI, 02906}
+
+
+\begin{abstract}
+.
+\end{abstract}
+
+
+\date{\today}
+
+\maketitle
+
+
+\section{Superfluids and Quantum Turbulence}
+
+Consider the Lagrangian for a complex scalar field theory with quartic self-interactions:
+\begin{equation}
+\mathcal{L} = -|\partial_\mu \phi|^2 - m^2|\phi|^2 - \frac{\lambda}{2}|\phi|^4.
+\end{equation}
+We work in the weak-field regime, $g_{\mu\nu} = \eta_{\mu\nu} -2\Phi I_{\mu\nu}$, where $\eta_{\mu\nu}$ is the Minkowski metric, $I_{\mu\nu}$ is the identity matrix, and $\Phi$ is the gravitational potential.  When working in the non-relativistic regime, we can explicitly write the highly oscillating behavior of $\phi$ as
+\begin{equation}
+\phi({\bf{x}},t) = \frac{1}{\sqrt{2m}}\psi({\bf{x}},t)e^{-imt},
+\end{equation}
+where $\psi$ is a slowly varying function in time.  {\rs{See \cite{Chavanis:2016shp} for the inclusion of interactions with electromagnetism. This reference is very good for going through all of basic equations in the theory, specifically after decomposing the scalar into amplitude and phase.}} The equation of motion for the complex scalar $\psi$ can be approximated by the Schr\"{o}dinger-Poisson equation.  In terms of dimensionless quantities,
+\begin{gather}
+i\Psi' = -\frac{1}{2}\tilde{\nabla}^2\Psi + \Phi\Psi + \tilde{\lambda}|\Psi|^2\Psi,\label{EQ:ScalarEoM}\\
+\tilde{\nabla}^2\Phi = |\Psi|^2,
+\end{gather}
+where the $'$ denotes derivatives with respect to the dimensionless time variable $m t$, and $\Psi = \sqrt{m}\psi/\sqrt{4\pi G}, \tilde{\nabla} = \nabla /m, \tilde{\lambda} = \lambda/16\pi G m^2$. {\rs{There are two ways to make these equations dimensionless.  Other than what is written here, we can write lengths/distances in terms of $G$, i.e. in Planck units.  Using Planck units may be more useful for simulating the entire halo, but I think these units may be more useful for the simulation of a small cluster of vortices.}}
+
+The scalar field equations of motion can be rewritten as fluid equations by the Madelung transformation:
+\begin{equation}
+\Psi = \sqrt{\rho}\exp(i\theta), \;\;\;\;\;\; {\bf{u}} = \tilde{\nabla}\theta,
+\end{equation}
+where $\rho, \theta$ are real functions, and ${\bf{u}}$ is the flow velocity.  Decomposing Eq.~(\ref{EQ:ScalarEoM}) into real and imaginary parts, the system is described in fluid variables by
+\begin{gather}
+\tilde{\nabla}^2\Phi = \rho,\\
+\rho' + \tilde{\nabla}\cdot(\rho {\bf{u}}) = 0,\\
+{\bf{u}}' + \frac{1}{2}\tilde{\nabla}(u^2) = -\tilde{\nabla}\left(\Phi + \tilde{\lambda}\rho - \frac{\tilde{\nabla}^2\rho}{4\rho}+\frac{(\tilde{\nabla}\rho)^2}{8\rho^2}\right).
+\end{gather}
+We note, the quartic self-interaction of the boson manifests as a source term in the velocity equation of motion.  This term is distinct from a viscosity, since there is no explicit dependence on velocity.  Instead, depending on the sign of $\lambda$, the fluid will flow to either fill or evacuate underdense regions.
+
+
+
+
+
+\section{Gravitational Waves from Turbulent Fluid}
+
+Tensor mode perturbations of the metric are sourced by the transverse and traceless component of the anisotropic stress-energy tensor, $\Pi_{ij}$. Assuming there are negligible gravitational waves before the source is turned on, Green's functions methods give the gravitational wave solution
+\begin{equation}
+h_{ij}({\bf{k}},t) = 8\pi G\int G_k(t,t')\Pi_{ij}({\bf{k}},t') dt',
+\end{equation}
+where $G_k(t,t')$ is the retarded Green's function.  We will be interested in gravitational radiation produced in a gravitational bound system.  Thus, the retarded Green's function can be found  as {\rs{We should make sure the effects of gravitational lensing should not be included here.  Also, this Green's function may change, depending on the specific details of situtaion, i.e. before halo formation, during the formation of a halo, or after stable halo configuration.  Right now, I think we should focus on stable halos, so this is the most relevant form.}}
+\begin{equation}
+G_k(t,t') = \frac{1}{k}\sin\left(k(t-t')\right)\Theta(t-t'),
+\end{equation}
+where the Heaviside step function $\Theta(t-t')$ will impose causality.
+
+For a turbulent fluid with a spatial velocity distribution $\bf{u}(\bf{x})$, the Fourier space stress tensor is given \cite{Kosowsky:2001xp} by
+\begin{equation}
+\Pi_{ij}({\bf{k}},t) = \left(P_{il}(\hat{\bf{k}})P_{jm}(\hat{\bf{k}})-\frac{1}{2}P_{ij}(\hat{\bf{k}})P_{lm}(\hat{\bf{k}})\right)\frac{\omega V}{(2\pi)^3}\int d{\bf{q}} \,u_l({\bf{q}},t)u_m({\bf{k}}-{\bf{q}},t),
+\end{equation}
+where $P_{ij}(\hat{\bf{k}})$ is the projection operator onto the transverse plane of ${\bf{k}}$, $V$ is a volume included for dimensional reasons, and $\omega$ is the enthalpy density, equal to the sum of energy density and pressure of the nonturbulent fluid.
+
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+
+%\cite{Chavanis:2016shp}
+\bibitem{Chavanis:2016shp} 
+  P.~H.~Chavanis and T.~Matos,
+  \emph{Covariant theory of Bose-Einstein condensates in curved spacetimes with electromagnetic interactions: the hydrodynamic approach},
+  Eur.\ Phys.\ J.\ Plus {\bf 132}, no. 1, 30 (2017)
+  %doi:10.1140/epjp/i2017-11292-4
+  [arXiv:1606.07041 [gr-qc]].
+  %%CITATION = doi:10.1140/epjp/i2017-11292-4;%%
+  %8 citations counted in INSPIRE as of 02 Mar 2018
+
+%\cite{Fan:2016rda}
+\bibitem{Fan:2016rda} 
+  J.~Fan,
+  \emph{Ultralight Repulsive Dark Matter and BEC},
+  Phys.\ Dark Univ.\  {\bf 14}, 84 (2016)
+  %doi:10.1016/j.dark.2016.10.005
+  [arXiv:1603.06580 [hep-ph]].
+  %%CITATION = doi:10.1016/j.dark.2016.10.005;%%
+  %15 citations counted in INSPIRE as of 02 Mar 2018
+
+%\cite{Kosowsky:2001xp}
+\bibitem{Kosowsky:2001xp} 
+  A.~Kosowsky, A.~Mack and T.~Kahniashvili,
+  \emph{Gravitational radiation from cosmological turbulence},
+  Phys.\ Rev.\ D {\bf 66}, 024030 (2002)
+  %doi:10.1103/PhysRevD.66.024030
+  [astro-ph/0111483].
+  %%CITATION = doi:10.1103/PhysRevD.66.024030;%%
+  %139 citations counted in INSPIRE as of 27 Feb 2018
+
+
+\end{thebibliography}
+
+\end{document}
+
+
