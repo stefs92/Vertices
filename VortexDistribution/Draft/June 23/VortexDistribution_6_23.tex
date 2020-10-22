@@ -1,0 +1,338 @@
+\documentclass[aps,prd,twocolumn,nofootinbib,superscriptaddress]{revtex4-1}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{dcolumn}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage[latin1]{inputenc}
+\usepackage{latexsym}
+\usepackage{rotating}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[usenames]{color}
+%\usepackage{yfonts}
+\usepackage{float}
+\usepackage{ucs}
+\usepackage{xspace} % Sensible space treatment at end of simple macros
+\usepackage{mathrsfs}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+%\usepackage{siunitx}
+\usepackage{array}
+\usepackage[normalem]{ulem}
+\usepackage[english]{babel}
+
+%\hypersetup{citecolor=black}
+
+
+\newcommand{\dd}[1]{\mathrm{d}#1\,}
+\newcommand{\bfnab}{{\boldsymbol \nabla}}
+
+
+\begin{document}
+
+\title{Vortex Distribution in Superfluid Dark Matter Halos}
+
+\author{R.C. Greene}
+\affiliation{}
+\author{Robert Sims}
+\email{robert\_sims@brown.edu}
+\affiliation{Department of Physics, Brown University, Providence, RI, 02906}
+\author{Stefan Stanojevic}
+\email{stefan\_stanojevic@brown.edu}
+\affiliation{Department of Physics, Brown University, Providence, RI, 02906}
+
+
+\begin{abstract}
+.
+\end{abstract}
+
+
+\date{\today}
+
+\maketitle
+
+
+
+\section{Introduction}
+
+Despite the success of the Lambda Cold Dark Matter ($\Lambda$CDM) paradigm on cosmological scales, the explicit field theoretic description of dark matter has remained elusive.  One theory, superfluid dark matter, has received renewed attention with recent work \cite{Berezhiani:2015bqa,Berezhiani:2015pia} in merging the behavior of $\Lambda$CDM on cosmological scales and Modified Newtonian Dynamics on galactic scales.  Furthermore, superfluid models have rich phenomenology, including work on solving the core-cusp problem \cite{Deng:2018jjz}, effects on gravitational lensing \cite{Hossenfelder:2018iym}, baryogenesis \cite{Alexander:2018fjp}, and unifying dark matter and dark energy \cite{Ferreira:2018wup}.
+
+One important property, which may lead to observational differences between superfluid and particle dark matter models, is the irrotational circulation of the superfluid, resulting in the formation of vortices when the superfluid rotates above a critical angular velocity \cite{Fetter}.  The superfluid density within a vortex vanishes over a characteristic (healing) length $\xi$, which typically results in a maximum of $\mathcal{O}(100)$ vortices within a typical halo \cite{Silverman:2002qx,Yu:2002,Kain:2010rb,RindlerDaller:2011kx}.  Effects of vortices on the superfluid halo structure and dynamics have been previously considered \cite{Kain:2010rb,RindlerDaller:2011kx,Zinner:2011if,RindlerDaller:2012vj,Banik:2013rxa}, where the vortices are assumed to have no curvature and form a uniform lattice.  However, both theoretical \cite{Sheehy:2004a,Sheehy:2004b,Watanabe:2004,Cooper:2004} and experimental \cite{Yarmchuk:1979,Campbell:1979,Coddington:2004} research in two-dimensional systems suggests that the vortex spatial distribution can deviate from a uniform lattice in inhomogeneous rotating superfluids.  Yet this nonuniformity has been largely ignored when applied to superfluid dark matter.  As shown in \cite{Yu:2002,Zinner:2011if}, the inhomogeneity of vortices within the dark matter halo can significantly change the galactic rotation curves.  Further, Silverman and Mallet \cite{Silverman:2002qx} originally speculated that the expected abundance of vortex lines within the superfluid dark matter halo may have noticeable effects on gravitational lensing and polarization of distant background sources.  Thus, a theoretical understanding of the distribution of vortices within a halo must be found in order to quantify the expected magnitude and form of these gravitational effects.
+
+In this article, we consider the effects of the inhomogeneous superfluid dark matter on the expected vortex distribution and the shape of vortex lines, following a similar method to \cite{Sheehy:2004a,Sheehy:2004b}. [{\bf Outline of paper}]
+
+%In Section~\ref{Sec:Background}, we provide an overview of superfluids and vorticity.  In Section~\ref{Sec:}, we derive the energy functional of the vortex distribution.  An approximate solution for the vortex density that minimized this functional is then found in Section~\ref{Sec:}.
+
+
+
+\section{Background Equations and Energy Functional}
+\label{Sec:Background}
+
+We will be interested in a self-interacting (dark matter) field, which in the nonrelativistic limit can be described by the Gross-Pitaevskii equation \cite{Hui:2016ltb}.  In this context, the field's ``trapping'' potential $V({\bf r})$ is taken as the gravitational potential given by the Poisson equation\footnote{Additional forms of energy density, such as baryonic matter, can also be included in the Poisson equation without changing the following analysis.}.  Explicitly written, the Gross-Pitaevskii equation and Poisson equations describing the system are given as:
+\begin{align}
+i\dot{\Psi} &= \left(-\frac{1}{2m}\nabla^2 + V({\bf r}) + g |\Psi|^2\right)\Psi, \\
+\nabla^2 V &= 4\pi G m^2|\Psi|^2,
+\end{align}
+where the dot represents a time derivative, $m$ is the mass of $\Psi$, and $g$ is the self-coupling constant.  Redefining the field $\Psi$ by the Madelung representation \cite{Madelung},
+\begin{equation}
+\Psi = \sqrt{\rho_s}\exp(i\theta),
+\end{equation}
+the Gross-Pitaevskii equation decomposes into the fluid-like equations
+\begin{align}
+\dot{\rho}_s + \bfnab \cdot\left(\rho_s{\bf v}\right) &= 0,\label{Eq:Continuity}\\
+\dot{\bf v} + ({\bf v}\cdot\bfnab){\bf v} &= -\frac{1}{m}\bfnab\left(V + g\rho_s - \frac{\nabla^2\sqrt{\rho_s}}{2m\sqrt{\rho_s}}\right),\label{Eq:Flow}
+\end{align}
+where ${\bf v} = \bfnab\theta/m$ is defined as the field's flow velocity field, which satisfies the irrotational condition $\bfnab \times {\bf v} = 0$.
+
+Despite this condition, the $\bf v$ field attains nonzero circulation in the presence of vortices by being singular on the vortex axis. Requiring that $\Psi$ is single-valued leads to a condition that circulation of velocity field must be quantized,
+
+\begin{align}
+\oint_C v dl = \frac{h}{m} \Delta \phi = l \frac{h}{m}  
+\end{align}
+
+Vortex size is given by the healing length $\xi$,
+
+\begin{align}
+\xi = \sqrt{\frac{\hbar^2}{2 m g n}}
+\end{align}
+
+Superfluid density drops as a function of the distance from the vortex axis as $\rho^l$.
+
+In general, the dark matter halo will contain angular momenta, which can lead to time-dependence in the potential.  Instead of using the fluid-like equations in Eqs.~\eqref{Eq:Continuity} and \eqref{Eq:Flow}, we will work in a frame rotating with frequency ${\bf \Omega}$ so that the trapping potential is static.  Furthermore, we will look for solutions where the vortex distribution is stationary.  In this rotating frame, the energy functional can be written as
+\begin{align}
+E = \int_\mathcal{V}&\left[\frac{\left(\bfnab \sqrt{\rho_s}\right)^2}{2m} + (V({\bf r})-\mu)\rho_s + \frac{g}{2}\rho_s^2\right.\nonumber\\
+&\left. + \frac{i}{2}({\bf \Omega}\times {\bf r})\cdot\bfnab\rho_s\right] + E_v,
+\end{align}
+where we have introduced the chemical potential $\mu$, and $E_v$ is the energy associated with the vortices:
+\begin{align}
+E_v &= \frac{1}{2m}\int_\mathcal{V}\rho_s\left[\left(\bfnab \theta\right)^2 - 2m({\bf \Omega}\times {\bf r})\cdot \bfnab \theta \right],\nonumber\\
+&= \frac{m}{2}\int_\mathcal{V}\rho_s\left[\left({\bf v} - {\bf \Omega}\times {\bf r}\right)^2 - \left({\bf \Omega}\times{\bf r}\right)^2\right].
+\end{align}
+We note, minimization of the total energy with respect to $\rho_s, {\bf v}$ is equivalent to the solving the time-independent fluid-like equations in a rotated frame.  
+
+Since $\rho_s$ can be approximately solved without considering the backreaction of the vortices on the fluid density, the vortex energy $E_v$ can be minimized with respect to ${\bf v}$ using the previously found $\rho_s$. Discreteness of vortices will introduce an important contribution to the energy that will be described in the following section.
+
+{\bf Need to explain why the backreaction on $\rho$ is negligible}
+
+\section{Vortex Distribution in an Inhomogeneous Superfluid}
+\label{Sec:Distribution}
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Superfluid DM background theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\cite{Berezhiani:2015bqa}
+\bibitem{Berezhiani:2015bqa} 
+  L.~Berezhiani and J.~Khoury,
+  \emph{Theory of dark matter superfluidity},
+  Phys.\ Rev.\ D {\bf 92}, 103510 (2015)
+  %doi:10.1103/PhysRevD.92.103510
+  [arXiv:1507.01019 [astro-ph.CO]].
+  %%CITATION = doi:10.1103/PhysRevD.92.103510;%%
+  %79 citations counted in INSPIRE as of 11 Apr 2019
+  
+%\cite{Berezhiani:2015pia}
+\bibitem{Berezhiani:2015pia} 
+  L.~Berezhiani and J.~Khoury,
+  \emph{Dark Matter Superfluidity and Galactic Dynamics},
+  Phys.\ Lett.\ B {\bf 753}, 639 (2016)
+  %doi:10.1016/j.physletb.2015.12.054
+  [arXiv:1506.07877 [astro-ph.CO]].
+  %%CITATION = doi:10.1016/j.physletb.2015.12.054;%%
+  %29 citations counted in INSPIRE as of 11 Apr 2019
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cosmology Superfluid Papers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{Deng:2018jjz} 
+  H.~Deng, M.~P.~Hertzberg, M.~H.~Namjoo and A.~Masoumi,
+  \emph{Can Light Dark Matter Solve the Core-Cusp Problem?},
+  Phys.\ Rev.\ D {\bf 98}, no. 2, 023513 (2018)
+  %doi:10.1103/PhysRevD.98.023513
+  [arXiv:1804.05921 [astro-ph.CO]].
+  %%CITATION = doi:10.1103/PhysRevD.98.023513;%%
+  %13 citations counted in INSPIRE as of 24 May 2019
+
+\bibitem{Hossenfelder:2018iym} 
+  S.~Hossenfelder and T.~Mistele,
+  \emph{Strong lensing with superfluid dark matter},
+  JCAP {\bf 1902}, 001 (2019)
+  %doi:10.1088/1475-7516/2019/02/001
+  [arXiv:1809.00840 [astro-ph.GA]].
+  %%CITATION = doi:10.1088/1475-7516/2019/02/001;%%
+  %4 citations counted in INSPIRE as of 24 May 2019
+
+\bibitem{Alexander:2018fjp} 
+  S.~Alexander, E.~McDonough and D.~N.~Spergel,
+  \emph{Chiral Gravitational Waves and Baryon Superfluid Dark Matter},
+  JCAP {\bf 1805}, no. 05, 003 (2018)
+  %doi:10.1088/1475-7516/2018/05/003
+  [arXiv:1801.07255 [hep-th]].
+  %%CITATION = doi:10.1088/1475-7516/2018/05/003;%%
+  %11 citations counted in INSPIRE as of 24 May 2019
+
+\bibitem{Ferreira:2018wup} 
+  E.~Ferreira, G.M., G.~Franzmann, J.~Khoury and R.~Brandenberger,
+  \emph{Unified Superfluid Dark Sector},
+  arXiv:1810.09474 [astro-ph.CO].
+  %%CITATION = ARXIV:1810.09474;%%
+  %6 citations counted in INSPIRE as of 24 May 2019
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dark Matter vortex theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{Fetter}
+	A.~A.~Svidzinsky and A.~L.~Fetter,
+	\emph{Stability of a Vortex in a Trapped Bose-Einstein Condensate},
+	Phys.\ Rev.\ Lett. {\bf 84}, 5919 (2000);
+	\emph{Dynamics of a vortex in a trapped Bose-Einstein condensate},
+	Phys.\ Rev.\ A {\bf 62}, 063617 (2000).
+
+%\cite{Silverman:2002qx}
+\bibitem{Silverman:2002qx} 
+  M.~P.~Silverman and R.~L.~Mallett,
+  \emph{Dark matter as a cosmic Bose-Einstein condensate and possible superfluid},
+  Gen.\ Rel.\ Grav.\  {\bf 34}, 633 (2002).
+  %doi:10.1023/A:1015934027224
+  %%CITATION = doi:10.1023/A:1015934027224;%%
+  %51 citations counted in INSPIRE as of 19 Apr 2019
+  
+\bibitem{Yu:2002}
+  R.~P.~Yu and M.~J.~Morgan,
+  \emph{Vortices in a Rotating Dark Matter Condensate},
+  Class.\ Quant.\ Grav.\ {\bf 19}, L157 (2002)
+  
+%\cite{Kain:2010rb}
+\bibitem{Kain:2010rb} 
+  B.~Kain and H.~Y.~Ling,
+  \emph{Vortices in Bose-Einstein Condensate Dark Matter},
+  Phys.\ Rev.\ D {\bf 82}, 064042 (2010)
+  %doi:10.1103/PhysRevD.82.064042
+  [arXiv:1004.4692 [hep-ph]].
+  %%CITATION = doi:10.1103/PhysRevD.82.064042;%%
+  %39 citations counted in INSPIRE as of 19 Apr 2019
+  
+%\cite{RindlerDaller:2011kx}
+\bibitem{RindlerDaller:2011kx} 
+  T.~Rindler-Daller and P.~R.~Shapiro,
+  \emph{Angular Momentum and Vortex Formation in Bose-Einstein-Condensed Cold Dark Matter Haloes},
+  Mon.\ Not.\ Roy.\ Astron.\ Soc.\  {\bf 422}, 135 (2012)
+  %doi:10.1111/j.1365-2966.2012.20588.x
+  [arXiv:1106.1256 [astro-ph.CO]].
+  %%CITATION = doi:10.1111/j.1365-2966.2012.20588.x;%%
+  %114 citations counted in INSPIRE as of 18 Apr 2019
+
+%\cite{Zinner:2011if}
+\bibitem{Zinner:2011if} 
+  N.~T.~Zinner,
+  \emph{Vortex Structures in a Rotating BEC Dark Matter Component},
+  Phys.\ Res.\ Int.\  {\bf 2011}, 734543 (2011)
+  %doi:10.1155/2011/734543
+  [arXiv:1108.4290 [astro-ph.CO]].
+  %%CITATION = doi:10.1155/2011/734543;%%
+  %15 citations counted in INSPIRE as of 19 Apr 2019
+
+%\cite{RindlerDaller:2012vj}
+\bibitem{RindlerDaller:2012vj} 
+  T.~Rindler-Daller and P.~R.~Shapiro,
+  \emph{Finding New Signature Effects on Galactic Dynamics to Constrain Bose-Einstein-Condensed Cold Dark Matter},
+  %doi:10.1007/978-3-319-02063-1_12
+  [arXiv:1209.1835 [astro-ph.CO]].
+  %%CITATION = doi:10.1007/978-3-319-02063-1_12;%%
+  %21 citations counted in INSPIRE as of 18 Apr 2019
+
+%\cite{Banik:2013rxa}
+\bibitem{Banik:2013rxa} 
+  N.~Banik and P.~Sikivie,
+  \emph{Axions and the Galactic Angular Momentum Distribution},
+  Phys.\ Rev.\ D {\bf 88}, 123517 (2013)
+  %doi:10.1103/PhysRevD.88.123517
+  [arXiv:1307.3547 [astro-ph.GA]].
+  %%CITATION = doi:10.1103/PhysRevD.88.123517;%%
+  %37 citations counted in INSPIRE as of 18 Apr 2019
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Condensed Matter Vortex Lattice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{Sheehy:2004a}
+  D.~E.~Sheehy and L.~Radzihovsky,
+  \emph{Vortex Lattice Inhomogeneity in Spatially Inhomogeneous Superfluids},
+  Phys.\ Rev.\ A {\bf 70}, 051602 (2004)
+  [cond-mat/0402637].
+
+\bibitem{Sheehy:2004b}  
+  D.~E.~Sheehy and L.~Radzihovsky,
+  \emph{Vortices in Spatially Inhomogeneous Superfluids},
+  Phys.\ Rev.\ A {\bf 70}, 063620 (2004)
+  [cond-mat/0406205].
+  
+\bibitem{Watanabe:2004}
+  G.~Watanabe, G.~Bayum, and C.~J.~Pethick,
+  \emph{Landau Levels and the Thomas-Fermi Structure of Rapidly Rotating Bose-Einstein Condensates},
+  Phys.\ Rev.\ Lett. {\bf 93}, 190401 (2004),
+  [cond-mat/0403470].
+  
+\bibitem{Cooper:2004}
+  N.~R.~Cooper, S.~Komineas, and N.~Read,
+  \emph{Vortex Lattices in the Lowest Landau Level for confined Bose-Einstein condensates},
+  Phys.\ Rev.\ A {\bf 70}, 033604 (2004),
+  [cond-mat/0404112].
+  
+\bibitem{Yarmchuk:1979}
+  E.~J.~Yarmchuk, M.~J.~V.~Gordon, and R.~E.~Packard,
+  \emph{Observation of Stationary Vortex Arrays in Rotating Superfluid Helium},
+  Phys.\ Rev.\ Lett. {\bf 43}, 214 (1979).
+  
+\bibitem{Campbell:1979}
+  L.~J.~Campbell and R.~M.~Ziff,
+  \emph{Vortex patterns and energies in a rotating superfluid},
+  Phys.\ Rev.\ B {\bf 20}, 1886 (1979).
+  
+\bibitem{Coddington:2004}
+  I.~Coddington, P.~C.~Haljan, P.~Engels, V.~Schweikhard, S.~Tung, and E.~A.~Cornell,
+  \emph{Experimental studies of equilibrium vortex properties in a Bose-condensed gas},
+  Phys.\ Rev.\ A {\bf 70}, 063607 (2004),
+  [cond-mat/0405240].
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Energy Functional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{Hui:2016ltb}
+  L.~Hui, J.~P.~Ostriker, S.~Tremaine and E.~Witten,
+  \emph{Ultralight scalars as cosmological dark matter},
+  Phys.\ Rev.\ D {\bf 95}, no. 4, 043541 (2017)
+  %doi:10.1103/PhysRevD.95.043541
+  [arXiv:1610.08297 [astro-ph.CO]].
+  %%CITATION = doi:10.1103/PhysRevD.95.043541;%%
+  %362 citations counted in INSPIRE as of 24 May 2019
+  
+\bibitem{Madelung}
+	E.~Madelung,
+	\emph{Quantentheorie in hydrodynamischer Form},
+	Zeitschrift f\"ur Physik {\bf 40}, 322 (1927).
+
+
+\end{thebibliography}
+
+
+\end{document}

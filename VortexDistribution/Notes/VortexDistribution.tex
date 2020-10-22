@@ -1,0 +1,311 @@
+\documentclass[onecolumn,nofootinbib,superscriptaddress]{revtex4}
+
+%\usepackage{multirow, makecell}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{dcolumn}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage[latin1]{inputenc}
+\usepackage{latexsym}
+\usepackage{rotating}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[usenames]{color}
+%\usepackage{yfonts}
+\usepackage{float}
+\usepackage{ucs}
+\usepackage{xspace} % Sensible space treatment at end of simple macros
+\usepackage{mathrsfs}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+%\usepackage{siunitx}
+\usepackage{array}
+\usepackage[normalem]{ulem}
+\usepackage[english]{babel}
+
+\newcommand{\dd}[1]{\mathrm{d}#1\,}
+\newcommand{\bfell}{\boldsymbol \ell}
+
+\newcommand{\rs}[1]{\textcolor{blue}{\it{\textbf{RS: #1}}} }
+\newcommand{\stst}[1]{\textcolor{red}{\it{\textbf{SS: #1}}} }
+
+
+\begin{document}
+
+\section{3-D Vortex Distribution - A lot more work needs to be done}
+
+We attempt to calculate the vortex distribution in a spatially inhomogeneous superfluid using a three dimensional superfluid density function.  Physically, we expect superfluid dark matter behave as a full three dimensional condensate.  Vortices are described by a set of smooth curves $\{\boldsymbol{\ell}_i\}$, rather than discrete points $\{\boldsymbol{r}_i\}$ as in previous work \cite{Sheehy:2004} which provides a similar calculation in two dimensions.  Including the length of vortices introduces the possibility that vortices can intersect (analogous to cosmic strings), but we exclude this possibility for the derivation that follows.
+
+We begin by calculating the energy associated with a vortex in a rotating frame, determined so the trapping potential is fixed in this frame. The energy is then given by
+\begin{equation}
+E = \frac{m}{2}\int \dd{V} \rho_s \left[{\bf v}_s - \Omega\left(\hat{z}\times\bf{r}\right)\right]^2,\label{EQ:VortE}
+\end{equation}
+where $\Omega$ is the angular velocity of the trapping potential.  The energy is minimized for velocity ${\bf v}_s = \Omega\left(\hat{z}\times\bf{r}\right)$, which describes the rigid body rotation.  This is consistent with the two-dimensional case given in \cite{Sheehy:2004}.  This velocity distribution cannot be physical, as superfluids should be irrotational.  Instead, this result is achieved from a coarse-grained model for a uniform vortex distribution.  Instead, we wish to incorporate the discrete nature of vortices and recover corrections to the rigid rotation solution above.
+
+
+The phase gradient at a position ${\bf r}$ due to a collection of $N$ vortices is given as
+\begin{equation}
+{\bf v}_s = \frac{\hbar}{m}\sum_{i=1}^N \int \frac{\dd{\bfell_i}\times\left({\bf r} - \bfell_i\right)}{\left\|{\bf r} - \bfell_i\right\|^3}.
+\end{equation}
+When the position $\boldsymbol{r}$ is near one of the vortex lines, say $\bfell_j$, the contribution from the discreteness of the $j$th vortex introduces an important divergence which cannot be appropriately characterized by a coarse-grained distribution.  Instead, this term is pulled out separately as
+\begin{equation}
+{\bf v}_s = \frac{\hbar}{m}\int \frac{\dd{\bfell_j}\times\left({\bf r} - \bfell_j\right)}{\left|{\bf r} - \bfell_j\right|^3} + \frac{\hbar}{m}\sum_{i\neq j}^N \int \frac{\dd{\bfell_i}\times\left({\bf r} - \bfell_i\right)}{\left\|{\bf r} - \bfell_i\right\|^3}.\label{EQ:DcompVel}
+\end{equation}
+The remaining sum will be coarse-grained to give a modified vortex distribution function.  The modification from the homogeneous case will be used to cancel the divergent piece in the Eq.~(\ref{EQ:VortE}).
+
+We first address the course-grained contribution to the velocity given by
+\begin{equation}
+\sum_{i\neq j}^N \int \frac{\dd{\bfell_i}\times\left({\bf r} - \bfell_i\right)}{\left\|{\bf r} - \bfell_i\right\|^3}  \approx \int \dd{^3 r'}\frac{\bar{\bf n}_v\times\left(\bf{r}-\bf{r}'_i\right)}{\left\|\bf{r}-\bf{r}'_i\right\|^3},
+\end{equation}
+where $\bar{\bf n}_v$ is the coarse-grained distribution function throughout the superfluid.  The vector nature of this distribution function indicates an average vortex path through the fluid at a given position.  The distribution function $\bar{\bf n}_v$ can be decomposed into the homogeneous portion and a perturbation due to a shift in the position of vortices:
+\begin{equation}
+\bar{\bf n}_v = \frac{m\Omega}{\hbar}\left(\hat{z}+{\boldsymbol \delta}\right).
+\end{equation}
+The first term is the typical solution found from Eq.~(\ref{EQ:VortE}), which contributes zero energy (constant energy).
+
+The energy  associated with the vortex array can be written from the divergence piece and the correction of $\bar{\bf n}_v$ from homogeneity.  We preform the integral for energy over a small region surrounding each
+\begin{equation}
+E = \frac{m}{2}\sum_i \int_i \rho_s({\bf r}_i)\left[{\bf v}_d + {\bf v}_p\right]^2,
+\end{equation}
+where ${\bf v}_d$ is the divergence piece and ${\bf v}_p$ is the perturbed (from homogeneity) piece.  When coarse-grained, the summation over vortices is reduced to a integral with weighting $\|\bar{\bf n}_v\|$:
+\begin{equation}
+E = \frac{m}{2}\int\dd{V} n_v({\bf r}) \int_i \dd{^2 r'} \rho_s({\bf r} + {\bf r}')\left[{\bf v}_d + {\bf v}_p\right]^2.
+\end{equation}
+The integral around each vortex $\int_i$ is now a two-dimensional integral in a constant $z$ plane in a small region around the vortex.  For this two dimensional integral, we assume that the density $\rho_s$ does not significantly change over the small region, so $\rho_s({\bf r+r}') \approx \rho_s({\bf r})$.  The energy is then equal to
+\begin{equation}
+E\approx \frac{m}{2}\int\dd{V} n_v({\bf r}) \rho_s({\bf r})\int \dd{^2 r'} \left[{\bf v}_d + {\bf v}_p\right]^2. \label{EQ:TotalEn}
+\end{equation}
+
+
+\subsection{Divergent Velocity Term}
+
+We now turn to the explicit calculation of each velocity component.  First, we consider the divergent piece near the $j$th vortex, given by
+\begin{equation}
+{\bf v}_d = \frac{\hbar}{m}\int \frac{\dd{\bfell_j}\times\left({\bf r} - \bfell_j\right)}{\left|{\bf r} - \bfell_j\right|^3}.
+\end{equation}
+We assume the distance between the point of interest ${\bf r}$ and the vortex is smaller than the radius of curvature of the vortex at $z_0 = \hat{z}\cdot{\bf r}$, such that the primary piece of the divergence comes from ${\boldsymbol \ell}_j(z_0)$.  Then, we can expand the line element and ${\bf r}$ as
+\begin{equation}
+{\bf v}_d \approx \frac{\hbar}{m}\int \dd{z}\frac{\left(\bfell'_j(z_0) + \bfell''_j(z_0)(z-z_0)\right)\times\delta{\bf r}}{\left|\delta{\bf r} - \bfell'_j(z_0)(z-z_0)\right|^3}.
+\end{equation}
+To remain consistent with the decomposition in Eq.~(\ref{EQ:DcompVel}), we can only integrate along the vortex line a distance less than the average distance between vortices at position ${\bf r}$; For now, we label this distance $\epsilon$.
+
+
+\subsubsection{Vertical Vortices}
+Taking the zeroth order term (no curvature, i.e. straight vortex in $\hat{z}$-direction),
+\begin{equation}
+{\bf v}_d \approx \frac{\hbar}{m}\int_{z_0-\epsilon}^{z_0+\epsilon} \dd{z}\frac{\left(\hat{z}\times\hat{\rho}\right)\delta r}{\left|\delta r^2 + (z-z_0)^2\right|^{3/2}} = \frac{\hbar}{m}\left[\frac{2\epsilon\left(\hat{z}\times\hat{\rho}\right)}{\delta r \left(\delta r^2 + \epsilon^2\right)^{1/2}}\right].\label{EQ:VertVeld}
+\end{equation}
+This divergent term should dominate the energy for an individual vortex.  We can further calculate this contribution as
+\begin{equation}
+\int \dd{^2 r'} \|{\bf v}_d\|^2 \approx \frac{4\hbar^2}{m^2}\int_\xi^a \dd{^2 r'}\frac{\epsilon^2}{r'^2\left(r'^2+\epsilon^2\right)} = \frac{4\pi \hbar^2}{m^2}\log\left[\frac{a^2(\epsilon^2+\xi^2)}{\xi^2(\epsilon^2+a^2)}\right],
+\end{equation}
+where $\xi$ is the lower bound of radii given by the size of the vortex (radius where $\rho_s \rightarrow 0$) and $a$ is the upper bound for the small circle we integrate over.  So we do not overcount the energy per $z$-sliced vortex line, we take $\pi a^2=\pi \epsilon^2 = \bar{n}_v^{-1}$.  Physically, the equality $\pi \bar{n}_v a^2 = 1$ tells that we should integrate a single vortex over a region which is larger than the average spacing between vortices.  Further, the equality $a = \epsilon$ states that we cannot (consistently) integrate the contribution to the divergence along the nearest vortex line beyond the distance between nearest vortices.  Using this definition, we find
+\begin{equation}
+\int \dd{^2 r'} \|{\bf v}_d\|^2 \approx \frac{4\pi \hbar^2}{m^2}\log\left[\frac{1+\pi \xi^2 \bar{n}_v}{2\pi \xi^2 \bar{n}_v}\right].
+\end{equation}
+We note, in the the high vortex density limit \cite{Sheehy:2004}, given as $\pi \xi^2 n_v \rightarrow 1$, this contribution vanishes.  The energy contribution from this term is thus given by
+\begin{equation}
+E_\text{div} = \frac{2\pi \hbar^2}{m}\int\dd{V} \bar{n}_v({\bf r}) \rho_s({\bf r})\log\left[\frac{1+\pi \xi^2 \bar{n}_v({\bf r})}{2\pi \xi^2 \bar{n}_v({\bf r})}\right] \label{EQ:VertVelE}
+\end{equation}
+
+\subsubsection{Tilted Vortices - Take 1}
+
+We now allow for some deviation in the vortex line from the homogeneous case, but we will ignore winding the vortex around the superfluid distribution.  As a result, we require $\hat{\phi}\cdot\dd{\boldsymbol \ell} = 0$ so that the vortex line is vertical with deviations towards(away from) the center of the distribution.  Furthermore, we parameterize the vortex line by the $z$ coordinate, hence ${\boldsymbol \ell}'_j\cdot \hat{z} = 1$.  We will look at the velocity near the vortex line in a given $z$-slice and define the angle $\theta$ as the angle the vortex line makes with $\hat{z}$ at the $z$-slice, and the angle $\phi$ as the angle from $\hat{\rho}$ of $\delta{\bf r}$.  Then,
+\begin{align}
+\dd{\bfell} \times ({\bf r} - \bfell) &= \dd{z} \delta r(\hat{\phi}-\sin\phi\tan\theta\hat{z}),\\
+\|{\bf r} - \bfell\|^2 &= \delta r^2 + z^2 \sec^2\theta-2\delta r z\cos\phi\tan\theta.
+\end{align}
+We note, taking vertical vortices, $\theta = 0$, and we recover the results in Eq.~(\ref{EQ:VertVeld}).  Therefore, the divergent piece of the velocity is given by
+\begin{align}
+{\bf v}_d &= \frac{\hbar \delta r}{m}(\hat{\phi}-\sin\phi\tan\theta\hat{z})\int \frac{\dd{z}}{\left(\delta r^2 + z^2 \sec^2\theta-2\delta r z\cos\phi\tan\theta\right)^{3/2}},\\
+&= \frac{\hbar}{m \delta r}\left(\frac{\hat{\phi}-\sin\phi\tan\theta\hat{z}}{1-\cos^2\phi\sin^2\theta}\right)\left(\frac{z-\delta r\cos\phi\cos\theta\sin\theta}{\left(\delta r^2 + z^2 \sec^2\theta-2\delta r z\cos\phi\tan\theta\right)^{1/2}}\right),
+\end{align}
+where the limits of integration are symmetric around the point of closest approach, given by
+\begin{equation}
+z_0 = \delta r \cos\phi\cos\theta\sin\theta.
+\end{equation}
+
+\subsubsection{Tilted Vortices - Take 2}
+
+We now attempt a simpler solution using the work done in the vertical vortex section.  We work in some rotated coordinate system where the line element of the vortex at the point of interest is vertical.  This will mean the small circle we integrate over to calculate the energy is now rotated.  However, at a given point, the velocity is given by Eq.~(\ref{EQ:VertVeld}) as
+\begin{equation}
+{\bf v}_d \approx \frac{\hbar}{m}\left[\frac{2\epsilon\left(\hat{z}'\times\hat{\rho}'\right)}{\delta r \left(\delta r^2 + \epsilon^2\right)^{1/2}}\right],
+\end{equation}
+where the $'$ represent the rotated basis.  As before, we take $\delta r$ to be the shortest distance from the given point in the circular region to the vortex line.  This distance can be written in terms of the radius of the circle by the relation
+\begin{equation}
+\delta r = r\left(\cos^2\phi + \sin^2\phi\cos^2\theta\right)^{1/2},
+\end{equation}
+where $r'$ is the radius of the circular region, $\phi$ is the angular component of this region, and $\theta$ is the rotation angle of the coordinate transformation (these are equivalent to the angles presented in the first attempt).  Therefore, the divergent contribution of the velocity is given by
+\begin{equation}
+{\bf v}_d \approx \frac{\hbar}{m}\left(\frac{2\epsilon\left(\hat{z}'\times\hat{\rho}'\right)}{r'\left(\cos^2\phi + \sin^2\phi\cos^2\theta\right)^{1/2}}\right)\left[r'^2\left(\cos^2\phi + \sin^2\phi\cos^2\theta\right) + \epsilon^2\right]^{-1/2}.
+\end{equation}
+If we now wish to calculate the total energy associated with this contribution, as in Eq.~(\ref{EQ:VertVelE}), we must integrate over the region given by $r', \phi$.  However, this typically gives rise to an non-integrable function.
+
+We propose that the function $\epsilon$ should also be a function of $r', \phi$, such that the energy integral will be easily calculable.  Previously, we set $\epsilon$ to the same limit as the radial component of the circular region we integrate over.  However, this is not entirely correct.  The limit of integration $\epsilon$ is given as the maximum distance along the vortex line we integrate to consistently account for the divergent contribution of the vortex.  This means we cannot integrate over a region larger than the average distance between two vortices (given as the upper limit in the integration of $r'$).  Rather than limiting $\epsilon$ to this quantity as well, we instead need to limit the total length from the point of interest to the line element of the vortex.  In other words, if we consider the farthest point from the vortex line, only a small length of this vortex contributes.  Explicitly, this means that
+\begin{equation}
+r'^2\left(\cos^2\phi + \sin^2\phi\cos^2\theta\right) + \epsilon^2 = a^2,
+\end{equation}
+where $a$ will be the upper limit of integration on the $r'$ integral.  Therefore, taking $\epsilon = \epsilon(r',\phi)$, the energy integral can be solved as
+\begin{align}
+\int \dd{^2 r'} \|{\bf v}_d\|^2 &\approx \frac{4\hbar^2}{m^2}\int^{2\pi}_0\frac{d\phi}{\cos^2\phi + \sin^2\phi\cos^2\theta}\int_\xi^a \frac{\dd{r'}\left[a^2 - r'^2\left(\cos^2\phi + \sin^2\phi\cos^2\theta\right)\right]}{r' a^2} H(a - \xi) \\
+&= \frac{4\pi\hbar^2}{m^2}\left[\sec\theta\log\left(\frac{a^2}{\xi^2}\right) + \frac{\xi^2}{a^2}-1\right] H(a - \xi) .\label{EQ:VelDivInt}
+\end{align}
+where the step function $H(a - \xi)$ was introduced in order to prevent negative energy contributions. Again, taking $\pi a^2 = n_v^{-1}$, the total divergent energy piece is given by
+\begin{equation}
+E_\text{div} = \frac{2\pi \hbar^2}{m}\int \dd{V} \bar{n}_v({\bf r}) \rho_s({\bf r})\left[\sec\theta\log\left(\frac{1}{\pi\xi^2 \bar{n}_v({\bf r})}\right) + \pi\xi^2\bar{n}_v({\bf r}) - 1\right] H(a - \xi).
+\end{equation}
+
+We note, the secant factor comes from integrating a non-negative function
+\begin{equation}
+\int^{2\pi}_0\frac{d\phi}{\cos^2\phi + \sin^2\phi\cos^2\theta} = 2i\left[\log\left(-i\cos\theta\right)-\log\left(i\cos\theta\right)\right]\sec\theta. \label{EQ:ProperInt}
+\end{equation}
+Replacing the difference in logarithms with the principal value is not necessarily valid, as the secant can become negative.  When minimizing energy, if this subtlety is ignore, the configure will preferentially give $\pi/2 \leq \theta \leq 3\pi/2$ so that secant is negative, and the divergent piece of the integral contains a negative piece.  This should not be the case.  Therefore, the divergent energy is given by
+\begin{equation}
+E_\text{div} = \frac{2\pi \hbar^2}{m}\int \dd{V} \bar{n}_v({\bf r}) \rho_s({\bf r})\left[|\sec\theta|\log\left(\frac{1}{\pi\xi^2 \bar{n}_v({\bf r})}\right) + \pi\xi^2\bar{n}_v({\bf r}) - 1\right] H(a - \xi), \label{EQ:EnergyDiv}
+\end{equation}
+where the absolute value of the secant can instead be replaced with the expression in Eq.~(\ref{EQ:ProperInt}).
+
+
+
+\subsection{Perturbed Velocity Term}
+
+We now briefly review the argument in \cite{Sheehy:2004} in the calculation of the perturbed portion of the velocity.  By assumption, the vortices remain in the $\hat{z}$-direction, so the average velocity is given by
+\begin{equation}
+\bar{\bf v}_s = \Omega\hat{z}\times\left({\bf r} - 2 {\bf u}\right).
+\end{equation}
+Then, the average number density of vortices can be found as
+\begin{equation}
+\frac{2\pi \hbar}{m}\bar{n}_v \hat{z} = {\boldsymbol \nabla}\times \bar{\bf v}_s = 2\Omega\left(1-{\boldsymbol \nabla}\cdot {\bf u}\right)\hat{z}. \label{EQ:2dNv}
+\end{equation}
+Since this perturbed portion of the velocity is due to the coarsed-grained vortex distribution, we assume there is negligible change over the small region of integration $\dd{^2 r'}$.  Therefore,
+\begin{equation}
+\int \dd{^2 r'}\|{\bf v}_p\|^2 \approx 4 \pi a^2\Omega^2 \|{\bf u}\|^2 = \frac{4\omega^2\hbar^2 \|{\bf u}\|^2}{m^2\bar{n}_v}.
+\end{equation}
+Then, ignoring the cross-term, the total energy can be written as
+\begin{equation}
+E = \frac{2\hbar^2}{m}\int \dd{A} \rho_s({\bf r}) \left[4\omega^2\|{\bf u}\|^2 + \pi \bar{n}_v \log\left(\frac{1}{\pi \xi^2 \bar{n}_v}\right)\right],\label{EQ;2dTotEnergy}
+\end{equation}
+with $\bar{n}_v = (1-{\boldsymbol \nabla}\cdot {\bf u})\omega/\pi$.  The $\log$ function, taken from \cite{Sheehy:2004}, is similar to the what we have calculated in the previous section.  Then, taking functional derivative $\frac{\delta E}{\delta {\bf u}}\big|_{u=0} = 0$, the function ${\bf u}({\bf r})$ can be found to minimize the energy.
+
+We wish to find a similar method to calculate the total energy in the three dimensional case.  In the three dimensional case, we begin with the average velocity given by
+\begin{equation}
+\bar{\bf v}_s = \Omega\hat{z}\times{\bf r} + {\bf v}_p,
+\end{equation}
+which gives the number density of vortices as
+\begin{equation}
+\bar{\bf n}_v = \frac{m\Omega}{\pi \hbar}\left(\hat{z}+\frac{{\boldsymbol \nabla}\times {\bf v}_p}{2\Omega}\right), \label{EQ:NvDef}
+\end{equation}
+where an overall numeric factor may have been excluded, depending on whether the numeric factor in Eq.~(\ref{EQ:2dNv}) is valid.  The vector nature of the number density dictates the ``average'' direction of a vortex line passing through the point ${\bf r}$.  As in the previous section, we will not consider vortices wound around the distribution, so we exclude angular dependence.  The vortex line is given at a particular $z$-slicing by the angle $\theta$ from vertical, so the number density can be written as
+\begin{equation}
+\bar{\bf n}_v = \bar{n}_v \left(\cos\theta\hat{z}+\sin\theta\hat{\rho}\right), \label{EQ:NvAssumption}
+\end{equation}
+where $\hat{\rho}$ is the radial direction on the constant $z$ slice (cylindrical coordinates).  Ultimately, we will need Eq.~(\ref{EQ:NvDef}) and Eq.~(\ref{EQ:NvAssumption}) to relate $\theta$ in Eq.~(\ref{EQ:EnergyDiv}) to the number density function.
+
+The divergent energy piece contains the only explicit $\theta$ dependence.  Using Eq.~(\ref{EQ:NvAssumption}), we can find an expression for $\cos\theta$ as
+\begin{equation}
+\cos\theta = \frac{\hat{z}\cdot \bar{\bf n}_v}{\|\bar{\bf n}_v\|} = \frac{m}{2\pi\hbar}\left(\frac{2\Omega+\hat{z}\cdot\left({\boldsymbol \nabla}\times{\bf v}_p\right)}{\bar{n}_v}\right).
+\end{equation}
+Similarly, we can find the value of $\bar{n}_v$ using Eq.~(\ref{EQ:NvDef}) as
+\begin{equation}
+\bar{n}_v^2 = \|\bar{\bf n}_v\|^2 = \left(\frac{m}{2\pi\hbar}\right)^2\left[\left(2\Omega+\hat{z}\cdot{\boldsymbol \nabla}\times{\bf v}_p\right)^2 + \left(\hat{\rho}\cdot{\boldsymbol \nabla}\times{\bf v}_p\right)^2\right]. \label{EQ:nvDef}
+\end{equation}
+These are the only two quantities we need to calculate in order to find the total energy.
+
+
+\subsection{Total Energy}
+
+We return to the calculation of the total energy given in Eq.~(\ref{EQ:TotalEn}).  In particular, we must calculate the integral
+\begin{equation}
+\int \dd{^2 r'}\left[{\bf v}_d+{\bf v}_p\right]^2.
+\end{equation}
+We assume there is some symmetry argument that will make the cross term negligible.  Since the perturbed velocity term is attributed to the entire distribution, we assume there is relatively small corrections across the small region we integrate over.  Therefore, this integral can be approximated by
+\begin{equation}
+\int \dd{^2 r'}\left[{\bf v}_d+{\bf v}_p\right]^2 \approx \frac{\|{\bf v}_p\|^2}{\bar{n}_v} + \int \dd{^2 r'} \|{\bf v}_d\|^2,
+\end{equation}
+where the remaining integral is given by Eq.~(\ref{EQ:VelDivInt}).  Therefore the total energy can be written as
+\begin{equation}
+E \approx \frac{2\pi\hbar^2}{m}\int\dd{V}\rho_s({\bf r})\left[\frac{m^2}{4\pi \hbar^2}\|{\bf v}_p\|^2 + \left\|\frac{2\pi\hbar}{m}\left(\frac{\bar{n}_v^2}{2\Omega+\hat{z}\cdot\left({\boldsymbol \nabla}\times{\bf v}_p\right)}\right)\right\|\log\left(\frac{1}{\pi\xi^2 \bar{n}_v({\bf r})}\right) H(a - \xi) + \left( \pi \xi^2 \bar{n}_v^2 - \bar{n}_v \right) H(a - \xi) \right], \label{EQ:3dTotEn}
+\end{equation}
+where $\pi a^2 = (\bar{n}_v)^{-1}$, $\bar{n}_v$ is given by Eq.~(\ref{EQ:nvDef}), and the absolute value is explained in Eq.~(\ref{EQ:ProperInt}).  In order to find the correct distribution, we minimize the energy with respect to the velocity ${\bf v}_p$.
+
+\subsubsection{Pseudo 2D Solution}
+
+First, we consider the case where the vortices do not rotate so that $\hat{\rho}\cdot {\boldsymbol \nabla}\times {\bf v}_p = 0$.  In this case, we can switch variables to ${\bf u} = \left(\hat{z}\times {\bf v}_p\right)/2\Omega$, which reduces the energy equation and definition of $\bar{n}_v$ to
+\begin{align}
+E &\approx \frac{2\hbar^2}{m}\int \dd{V}\rho_s({\bf r})\left[\omega^2\|{\bf u}\|^2 + \pi\bar{n}_v\log\left(\frac{1}{\pi\xi^2 \bar{n}_v({\bf r})}\right) + \pi^2 \xi^2 \bar{n}_v^2 - \pi\bar{n}_v\right],\\
+\bar{n}_v &= \frac{m\Omega}{\pi\hbar}\left(1-{\boldsymbol \nabla}\cdot{\bf u}\right),
+\end{align}
+which we see is similar to the two-dimensional case in Eq.~(\ref{EQ;2dTotEnergy}).
+
+We minimize the total energy associated with the vortex distribution by finding the zero of the functional derivative with respect to ${\bf u}$.  Assuming that the derivatives of ${\bf u}$ are small, the solution for this velocity can be found as
+\begin{equation}
+{\bf u} \approx -\frac{1}{2\omega}\left(\log \frac{1}{\omega\xi^2}+2\omega\xi^2 -2\right){\boldsymbol \nabla} \log \rho_s.
+\end{equation}
+Again, we notice that this velocity approaches zero when taking the (almost) high vortex density limit $\omega\xi^2 \rightarrow 1$.  Then, using the definition of vortex number density, we find
+\begin{equation}
+\bar{n}_v \approx \frac{\omega}{\pi}+\frac{1}{2\pi}\left(\log \frac{1}{\omega\xi^2}+2\omega\xi^2 -2\right)\nabla^2\log\rho_s,
+\end{equation}
+where we have again used the equalities $\omega = m\Omega/\hbar$.  We note, for a given angular frequency $\Omega$, this solution will only be valid when $\pi \xi^2 \bar{n}_v \leq 1$.  If the predicted number density exceeds this bound, the solution violates assumptions used in the calculation of Eq.~(\ref{EQ:EnergyDiv}) so substantial corrections are needed.
+
+\subsubsection{3D Solution}
+
+We use a similar method previously described to minimizing the energy in Eq.~(\ref{EQ:3dTotEn}).  In this case, we are minimizing the energy with respect to the perturbed velocity field ${\bf v}_p$, giving the first order solution as
+\begin{equation}
+{\bf v}_p \approx \frac{\hbar}{m}\left(\hat{z}\times{\boldsymbol \nabla}\log\rho_s\right)\left(\log\frac{1}{\omega\xi^2}+2\omega\xi^2-2\right),
+\end{equation}
+and the number density can be found from Eq.~(\ref{EQ:NvDef}) as
+\begin{equation}
+\bar{n}_v \approx \frac{\omega}{\pi}\left[\left(1+\frac{c}{2\omega}\left(\nabla^2-\frac{\partial^2}{\partial z^2}\right)\log \rho_s\right)^2 + \left(\frac{c}{2\omega}\frac{\partial^2}{\partial z\partial \rho}\log\rho_s\right)^2\right]^{1/2},
+\end{equation}
+where we have written the solution in cylindrical coordinates, and $c = \log\frac{1}{\omega \xi^2}+2\omega \xi^2-2$.
+
+
+
+\section{Dimensionless Equations}
+
+By moving to dimensionless variables, the relative scales of parameters may be easily set.  In particular, we rescale the physical coordinates in units of the minimum vortex size $\xi$, i.e. $z\rightarrow \bar{z} = z/\xi$ and similarly for the (polar) radial coordinate.  Furthermore, we define dimensionless variables
+\begin{equation}
+N = \pi\xi^2 \bar{n}_v, \;\;\;\;\;\; W = \omega \xi^2, \;\;\;\;\;\; \vec{u}_p = \frac{m\xi}{\hbar}\vec{v}_p. \nonumber
+\end{equation}
+In terms of these new variables, the total energy we wish to minimize is given by
+\begin{equation}
+E \approx \frac{2\hbar^2\xi}{m}\int\dd{\bar{V}}\rho_s({\bf{\bar{r}}})\left[\frac{1}{4}\|{\bf u}_p\|^2 + 2\log\left(\frac{1}{N}\right)\left\|\frac{N^2}{2W + \hat{z}\cdot({\boldsymbol \nabla}\times{\bf u}_p)}\right\| + N^2 - N\right].
+\end{equation}
+Minimization with respect to ${\bf u}_p$ again gives us a grueling differential equation to solve:
+\begin{equation}
+\rho_s {\bf u}_p = -\hat{z}\times {\boldsymbol \nabla}\left(\rho_s\log\left(\frac{1}{N}\right)\frac{\sec\theta}{|\sec\theta|^3}\right) - {\boldsymbol \nabla}\times\left[\rho_s\hat{N}\left(2\log\left(\frac{1}{N}\right)|\sec\theta|-|\sec\theta|+2N-1\right)\right],
+\end{equation}
+where $2N\cos\theta = 2W+\hat{z}\cdot({\boldsymbol \nabla}\times{\bf u}_p)$.  Taking the limit of small perturbation, given as ${\boldsymbol \nabla}\times {\bf u}_p\rightarrow 0$, gives $N\rightarrow W$.  This lowest order approximation gives solution
+\begin{equation}
+{\bf u}_p = \left(\hat{z}\times{\boldsymbol \nabla}\log \rho_s\right)\left(\log\frac{1}{W} + 2W - 2\right) = \frac{m\xi}{\hbar}{\bf v}_p,
+\end{equation}
+and the number density as
+\begin{equation}
+N = W\left[\left(1+\frac{c}{2W}\left(\nabla^2-\frac{\partial^2}{\partial z^2}\right)\log \rho_s\right) + \left(\frac{c}{2W}\frac{\partial^2}{\partial\bar{z}\partial\bar{\rho}}\log \rho_s\right)^2\right]^{1/2}.
+\end{equation}
+We note, in these dimensionless coordinates, the we can choose $W$ between zero and one, and for consistency we must have $0\leq N\leq 1$.  Furthermore, the halo density $\rho_s$ will typically have a scale $R_\text{halo}  = r_\text{halo,phys}/\xi$ corresponding to the halo size in units of the vortex size $\xi$.  Thus, we require $R_\text{halo} \geq 1$ so that $R_\text{halo}^2$ vortices could fit within the halo.  In particular, we will (typically) consider a halo of the form
+\begin{equation}
+\rho_s = \rho_0 \left(\frac{\bar{r}}{R_\text{halo}}\right)^\ell \exp\left[-\left(\frac{\bar{r}}{R_\text{halo}}\right)^2\right],
+\end{equation}
+where $\bar{r}^2 = \bar{\rho}^2+\bar{z}^2$ and $\ell$ is corresponds to the typical angular momenta eigenvalue.  Ultimately, $\ell$ should be related to the physical rotation rate $\Omega$, but the freedom given with the choice of $\xi$ allows this relation to remain arbitrary for now.
+
+
+
+
+\begin{thebibliography}{99}
+  
+%\cite{Sheehy:2004}
+\bibitem{Sheehy:2004}
+  D.~E.~Sheehy and L.~Radzihovsky,
+  \emph{Vortices in Spatially Inhomogeneous Superfluids},
+  Phys.\ Rev.\ A {\bf 70}, 063620 (2004),
+  [cond-mat/0406205].
+
+\end{thebibliography}
+
+\end{document}
